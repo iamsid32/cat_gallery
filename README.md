@@ -9,6 +9,7 @@ Implemented concepts ->
   Test classe for repository and viewmodel using Mockito
   LazyColumn for vertical listing of images
   Coil image library to fetch images from the url
+  Material Theme
 
 For the test class of viewmodel and repository reffer the classes ->
   CatImageViewModelTest
