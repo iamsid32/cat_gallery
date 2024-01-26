@@ -94,21 +94,12 @@ dependencies {
     implementation(Dependencies.composeMaterial)
     //lottie
     implementation(Dependencies.lottie)
-
-
-    implementation("org.mockito:mockito-core:5.3.1")
-
-    // Core library
-    testImplementation("org.mockito:mockito-core:5.3.1") // Use the latest version available
-
-    // Kotlin extensions for Mockito
-    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0") // Use the latest version available
-
-    // Testing LiveData and other architecture components
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
-
-    // Kotlin Coroutines Test library
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3") // Use the latest version available
+    //testing
+    implementation(Dependencies.mockitoCore)
+    testImplementation(Dependencies.mockitoCore)
+    testImplementation(Dependencies.mockitoKotlin)
+    testImplementation(Dependencies.coreTesting)
+    testImplementation(Dependencies.coroutinesTest)
 
 }
 

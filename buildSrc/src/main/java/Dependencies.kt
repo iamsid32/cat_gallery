@@ -39,6 +39,12 @@ object Dependencies {
     val composeMaterial by lazy { "androidx.compose.material:material:1.3.0" }
     //lottie
     val lottie by lazy { "com.airbnb.android:lottie-compose:4.0.0" }
+    //testing
+    val mockitoCore by lazy { "org.mockito:mockito-core:5.3.1" }
+    val mockitoKotlin by lazy { "org.mockito.kotlin:mockito-kotlin:4.0.0" }
+    val coreTesting by lazy { "androidx.arch.core:core-testing:2.2.0" }
+    val coroutinesTest by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3" }
+
 
 }
 
