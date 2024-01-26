@@ -59,41 +59,50 @@ fun CatImageListComposable(catImageViewModel: CatImageViewModel = hiltViewModel(
             catImageViewModel.getCatImageList()
         }
     )
-     Surface(modifier = Modifier.fillMaxSize()) {
-         Box(
-             modifier = Modifier
-                 .fillMaxSize()
-                 .pullRefresh(pullRefreshState)
-                 .background(color = MaterialTheme.colorScheme.surfaceContainer)
-         ) {
+     Scaffold(
+         modifier = Modifier.fillMaxSize(),
+         topBar = { AppBarComposables() },
+         content = {
+             Surface(modifier = Modifier.fillMaxSize()) {
+                 Box(
+                     modifier = Modifier
+                         .fillMaxSize()
+                         .pullRefresh(pullRefreshState)
+                         .background(color = MaterialTheme.colorScheme.surfaceContainer)
+                 ) {
 
-             if (catImageList != null){
-                 if (catImageList!!.size > 1){
-                     LazyColumn(
-                         modifier = Modifier.fillMaxSize()
-                     ){
-                         items(catImageList!!) {item->
-                             CatImageItemComposable(item)
+                     if (catImageList != null){
+                         if (catImageList!!.size > 1){
+                             LazyColumn(
+                                 modifier = Modifier.fillMaxSize()
+                             ){
+                                 item {
+                                     Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+                                 }
+                                 items(catImageList!!) {item->
+                                     CatImageItemComposable(item)
+                                 }
+                                 item {
+                                     Spacer(modifier = Modifier.height(20.dp))
+                                 }
+                             }
+                         }else{
+                             LottieLoaderComposable(R.raw.empty)
                          }
-                         item {
-                             Spacer(modifier = Modifier.height(20.dp))
-                         }
+                     }else{
+                         LottieLoaderComposable(R.raw.loader)
                      }
-                 }else{
-                     LottieLoaderComposable(R.raw.empty)
-                 }
-             }else{
-                 LottieLoaderComposable(R.raw.loader)
-             }
 
-             PullRefreshIndicator(
-                 refreshing = showLoader,
-                 state =pullRefreshState,
-                 modifier = Modifier
-                     .padding(top = 20.dp)
-                     .align(Alignment.TopCenter),
-                 contentColor = MaterialTheme.colorScheme.primary
-             )
+                     PullRefreshIndicator(
+                         refreshing = showLoader,
+                         state =pullRefreshState,
+                         modifier = Modifier
+                             .padding(top = it.calculateTopPadding())
+                             .align(Alignment.TopCenter),
+                         contentColor = MaterialTheme.colorScheme.primary
+                     )
+                 }
+             }
          }
-     }
+     )
 }
